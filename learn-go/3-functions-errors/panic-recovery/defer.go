@@ -8,9 +8,9 @@ func main() {
 	defer fmt.Println(1)
 	defer fmt.Println(2)
 	fmt.Println(3)
-	if err != nil {
-		panic("some panic")
-	}
+	//if err != nil {
+	//	panic("some panic")
+	//}
 
 	fmt.Println(4)
 }
