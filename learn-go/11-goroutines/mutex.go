@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"sync"
 	"time"
 )
@@ -26,8 +25,8 @@ func bookCab(name string, wg *sync.WaitGroup, m *sync.Mutex) {
 	fmt.Println("welcome to the website", name)
 	fmt.Println("some offers for you", name)
 
-	//m.Lock()
-	//defer m.Unlock()
+	m.Lock()
+	defer m.Unlock()
 	//until the lock is not released
 	//any read , write from other goroutines would not be allowed after lock is acquired
 	if cab >= 1 {
@@ -41,5 +40,4 @@ func bookCab(name string, wg *sync.WaitGroup, m *sync.Mutex) {
 
 	fmt.Println()
 
-	log.Logger{}
 }

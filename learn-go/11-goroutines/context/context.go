@@ -41,6 +41,8 @@ func main() {
 		select {
 		case <-ctx.Done(): // If the context indicates done (timeout reached), skip sending process
 			fmt.Println("The timer expired before the process finished")
+			return
+
 		case ch <- slowFunction(): // If timeout not hit yet, run slowFunction() and send result to the channel
 			fmt.Println("Process finished in time and sent the result")
 

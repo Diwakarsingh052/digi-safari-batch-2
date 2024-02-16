@@ -5,15 +5,20 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"small-app/middleware"
+	"small-app/models"
 	"small-app/pkg/ctxmanage"
 )
 
 func API() *gin.Engine {
 
 	r := gin.New()
+	c := models.NewConn()
+	s := models.NewStore(&c)
+	h := handler{Store: s}
 	//apply middleware to all the endpoints using r.Use
 	r.Use(middleware.Logger())
 	r.GET("/check", check)
+	r.POST("/signup", h.Signup)
 
 	return r
 }
